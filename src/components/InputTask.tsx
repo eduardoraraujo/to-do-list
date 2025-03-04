@@ -8,7 +8,7 @@ export function InputTask() {
 
   const prevTextInput = "Descrição da tarefa | ";
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleEventChange(e: React.ChangeEvent<HTMLInputElement>) {
     const inputValue = e.target.value;
 
     if (!inputValue.startsWith(prevTextInput)) {
@@ -18,9 +18,14 @@ export function InputTask() {
     }
   }
 
+  function handleFocus() {
+    setFocus(true);
+    if (!value) setValue(prevTextInput);
+  }
+
   function handleClearValue() {
     setFocus(false);
-    setValue((prev) => (prev = ""));
+    setValue("");
   }
 
   return (
@@ -29,11 +34,8 @@ export function InputTask() {
         type="text"
         value={focus ? value : ""}
         placeholder="Adicione uma nova tarefa"
-        onChange={handleChange}
-        onFocus={() => {
-          setFocus(true);
-          if (!value) setValue(prevTextInput);
-        }}
+        onChange={handleEventChange}
+        onFocus={handleFocus}
         onBlur={handleClearValue}
       />
       <button type="submit">
