@@ -16,10 +16,24 @@
 
   /* Feedback */
   --danger: #e25858;
+
+  /* Fonts */
+  --font-family: "Inter", sans-serif;
+  --text-xs: 12px/140% var(--font-family);
+  --text-sm: 14px/140% var(--font-family);
+  --text-base: 16px/140% var(--font-family);
+
+  --text-xs-bold: bold 12px/140% var(--font-family);
+  --text-sm-bold: bold 14px/140% var(--font-family);
+  --text-base-bold: bold 16px/140% var(--font-family);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: var(--gray-600);
 }
