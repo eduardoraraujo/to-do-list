@@ -27,7 +27,7 @@ export function Task({ tasksCreated, tasksCompleted }: TaskProps) {
       </div>
 
       <div>
-        <>{tasksCreated <= 0 ? <NothingToShow /> : null}</>
+        {tasksCreated <= 0 ? <NothingToShow /> : null}
       </div>
     </div>
   );
