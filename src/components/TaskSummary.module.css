@@ -1,0 +1,35 @@
+.tasks {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+  }
+  
+  .tasksCreated,
+  .tasksCompleted {
+    display: flex;
+    gap: 0.5rem;
+    font: var(--text-sm-bold);
+  }
+  
+  .tasksInfo {
+    display: flex;
+    width: 46rem;
+    justify-content: space-between;
+  }
+  
+  .tasksCreated p {
+    color: var(--blue);
+  }
+  
+  .tasksCompleted p {
+    color: var(--purple);
+  }
+  
+  .tasksCounts {
+    font: var(--text-xs-bold);
+    color: var(--gray-200);
+    padding: 0.125rem 0.5rem;
+    border-radius: 10px;
+    background-color: var(--gray-400);
+  }
+  

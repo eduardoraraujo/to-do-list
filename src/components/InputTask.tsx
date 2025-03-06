@@ -1,30 +1,21 @@
 import styles from "./InputTask.module.css";
 import plus from "../assets/plus.svg";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
-export function InputTask() {
+interface InputTaskProps {
+  onAddTask: (title: string) => void;
+}
+
+export function InputTask({ onAddTask }: InputTaskProps) {
   const [value, setValue] = useState("");
-  const [focus, setFocus] = useState(false);
 
-  const prevTextInput = "Descrição da tarefa | ";
-
-  function handleEventChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const inputValue = e.target.value;
-
-    if (!inputValue.startsWith(prevTextInput)) {
-      setValue(prevTextInput);
-    } else {
-      setValue(inputValue);
-    }
+  function handleEventChange(event: ChangeEvent<HTMLInputElement>) {
+    setValue(event.target.value);
   }
 
-  function handleFocus() {
-    setFocus(true);
-    if (!value) setValue(prevTextInput);
-  }
-
-  function handleClearValue() {
-    setFocus(false);
+  function handleCreateTask() {
+    if (value === "") return;
+    onAddTask(value.trim());
     setValue("");
   }
 
@@ -32,13 +23,10 @@ export function InputTask() {
     <div className={styles.task}>
       <input
         type="text"
-        value={focus ? value : ""}
         placeholder="Adicione uma nova tarefa"
         onChange={handleEventChange}
-        onFocus={handleFocus}
-        onBlur={handleClearValue}
       />
-      <button type="submit">
+      <button type="submit" onClick={handleCreateTask}>
         Criar
         <img src={plus} alt="" />
       </button>
